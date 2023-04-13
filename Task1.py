@@ -22,12 +22,11 @@ while oddNumber < 20:
 
 print("\nPrint sum of first 10 numbers using for loop")
 Total = 0
-loopCount = 0
 for addNumbers in range(1, 11):
     # Adding the sum of the current number to the total of the previous number
     Total = addNumbers + Total
     print(Total)
-    loopCount+=1 #loop count increment
+    
    
     
     

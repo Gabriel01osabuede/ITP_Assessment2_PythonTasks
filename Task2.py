@@ -10,6 +10,5 @@ while increment <= 10:
     result = value * increment
     print("{0} x {1} = {2}".format(value, increment, result))
     increment += 1
-    # Checking the status of the increment value if it's up to 10 as per requirement.
-    if(increment > 10):
-        break
+    
+

@@ -1,0 +1,70 @@
+import time
+
+UserDatabase = {}
+
+def MainMenu():
+    checkInput = None
+    print("===" * 20)
+    print("\n**Welcome to Champions Soccer Club**")
+    print("Please choose an option from the followings")
+    print("1) Add player name and score\n2) Display all the player information and scores\n3) Quit\n")
+    print("===" * 15)
+    UserChoice = input("Enter you choice \t: ")
+    try:
+        checkInput = int(UserChoice)
+        if(checkInput > 3 or checkInput <= 0):
+            print("Invalid input.\nProvided Options are 1,2 and 3.\nTry Again.")
+            MainMenu()
+    except ValueError:
+        print("Invalid input.\nEnter a valid Input.")
+        MainMenu()
+
+    match checkInput:
+        case 1:
+            AddPlayerDetails()
+        case 2:
+            ViewUserDetails()
+        case 3:
+            print("**GoodBye.. See you again!*")
+            exit()
+        
+
+def AddPlayerDetails():
+    Name = input("Enter the player name  :  ")
+    Score = input("Enter the score  :  ")
+    try:
+        checkScore = int(Score)
+        if(checkScore > 100 or checkScore < 0):
+            print("Invalid score.\nTry again.")
+            MainMenu()
+    except ValueError:
+        print("Invalid Entry.\nTry Again")
+        MainMenu()
+
+    UserDatabase[Name] = Score
+    UserSelection()
+
+
+def UserSelection():
+    userInput = str(input("Do you want to add another player? Enter Y for Yes, N for  No\t:  "))
+    if(userInput.upper() == "Y"):
+        AddPlayerDetails()
+    elif(userInput.upper() == "N"):
+        MainMenu()
+    elif(userInput.upper() != "Y" or userInput.upper() != "N"):
+        print("Invalid selection.\nTry Agian")
+        UserSelection()
+
+
+def ViewUserDetails():
+    print("Player & Score Details")
+    print("-" * 30)
+    print("Player \t Score")
+    for item in UserDatabase:
+        print(item  + "   :  " + UserDatabase[item])
+    time.sleep(2.0)    #This gives the user a bit of time to view records displayed.
+    MainMenu()
+
+
+# Calling the Entry point of the applicatiion.
+MainMenu()
